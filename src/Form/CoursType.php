@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Classe;
 use App\Entity\Cours;
 use App\Entity\Niveau;
 use App\Entity\Professeur;
@@ -23,6 +24,11 @@ class CoursType extends AbstractType
             ->add('niveau', EntityType::class, [
                 'class' => Niveau::class,
                 'choice_label' => 'id',
+            ])
+            ->add('classes', EntityType::class, [
+                'class' => Classe::class,
+                'choice_label' => 'id',
+                'multiple' => true,
             ])
         ;
     }

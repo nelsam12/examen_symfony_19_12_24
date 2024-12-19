@@ -30,9 +30,16 @@ class Cours
     #[ORM\OneToMany(targetEntity: Session::class, mappedBy: 'cours')]
     private Collection $sessions;
 
+    /**
+     * @var Collection<int, Classe>
+     */
+    #[ORM\ManyToMany(targetEntity: Classe::class, inversedBy: 'cours')]
+    private Collection $classes;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
+        $this->classes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -102,6 +109,30 @@ class Cours
                 $session->setCours(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Classe>
+     */
+    public function getClasses(): Collection
+    {
+        return $this->classes;
+    }
+
+    public function addClass(Classe $class): static
+    {
+        if (!$this->classes->contains($class)) {
+            $this->classes->add($class);
+        }
+
+        return $this;
+    }
+
+    public function removeClass(Classe $class): static
+    {
+        $this->classes->removeElement($class);
 
         return $this;
     }
