@@ -1,0 +1,34 @@
+{# templates/partials/pagination.html.twig #}
+<div class="flex justify-between items-center mt-4">
+	<p class="text-sm text-gray-600">
+		Page
+		<span class="font-medium text-gray-800">{{ currentPage }}</span>
+		sur
+		<span class="font-medium text-gray-800">{{ totalPages }}</span>
+	</p>
+	<div class="flex gap-2">
+		{% if hasPreviousPage %}
+			<a href="{{ path(route, { page: currentPage - 1 }) }}" class="bg-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-400">
+				<i class="fas fa-chevron-left"></i>
+				Précédent
+			</a>
+		{% else %}
+			<button class="bg-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-400 disabled:opacity-50" disabled>
+				<i class="fas fa-chevron-left"></i>
+				Précédent
+			</button>
+		{% endif %}
+
+		{% if hasNextPage %}
+			<a href="{{ path(route, { page: currentPage + 1 }) }}" class="bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700">
+				Suivant
+				<i class="fas fa-chevron-right"></i>
+			</a>
+		{% else %}
+			<button class="bg-blue-300 text-gray-500 px-3 py-1 rounded-lg cursor-not-allowed" disabled>
+				Suivant
+				<i class="fas fa-chevron-right"></i>
+			</button>
+		{% endif %}
+	</div>
+</div>

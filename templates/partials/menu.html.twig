@@ -1,0 +1,23 @@
+<div class="w-64 h-lvh bg-blue-600 text-white p-6 space-y-8">
+			<h2 class="text-2xl font-semibold">Dashboard</h2>
+			<ul
+				class="space-y-4">
+				<!-- Gestion des cours -->
+				<li>
+					<a href="{{ path('cours.index') }}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+						<i class="fas fa-book"></i>
+						<span>Cours</span>
+					</a>
+				</li>
+
+				<!-- Gestion des niveaux -->
+				<li>
+					<a href="{{ path('niveau.index') }}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+						<i class="fas fa-sitemap"></i>
+						<span>Niveaux</span>
+					</a>
+				</li>
+
+
+			</ul>
+		</div>
